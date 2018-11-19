@@ -1,0 +1,13 @@
+{
+  "id": 12345,
+  "name": "foo",
+  "category": {
+    "id": 12345,
+    "type": "bar",
+    "name": "baz",
+    "subcategory": {
+      "id": 12345,
+      "name": "qux"
+    }
+  }
+}
