@@ -1,8 +1,9 @@
 package io.github.isuzuki
 
+import cats.syntax.either._
 import io.circe.Decoder
-import io.circe.parser._
 import io.circe.generic.auto._
+import io.circe.parser._
 
 import scala.io.Source
 
@@ -18,8 +19,8 @@ case class NestedItem (
 )
 
 object NestedItem {
-  implicit val detailDecoder: Decoder[Detail] = Decoder[String].map { s =>
-    Detail(decode[Map[String, String]](s).right.get)
+  implicit val detailDecoder: Decoder[Detail] = Decoder[String].emap { s =>
+    decode[Map[String, String]](s).map(Detail).leftMap(_.getMessage)
   }
 
   case class Detail(value: Map[String, String]) extends AnyVal
