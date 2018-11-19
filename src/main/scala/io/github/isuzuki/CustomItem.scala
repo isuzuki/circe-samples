@@ -1,12 +1,6 @@
 package io.github.isuzuki
 
 import io.circe.Decoder
-import io.circe.generic.auto._
-import io.circe.parser._
-
-object CustomSample extends App {
-  println(decode[CustomItem](jsonStr))
-}
 
 case class CustomItem (
   id: Int,
